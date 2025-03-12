@@ -24,8 +24,8 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="추후 이미지 교체"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:text="추후 이미지 교체" />
 
             <EditText
                 android:id="@+id/textInputName"
@@ -34,9 +34,8 @@
                 android:layout_marginStart="9dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="9dp"
-                android:layout_weight="1"
-                android:inputType="text"
-                android:hint="@string/label_text_input_name" />
+                android:hint="@string/label_text_input_name"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/textInputPhone"
@@ -45,9 +44,8 @@
                 android:layout_marginStart="9dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="9dp"
-                android:layout_weight="1"
-                android:inputType="phone"
-                android:hint="@string/label_text_input_phone" />
+                android:hint="@string/label_text_input_phone"
+                android:inputType="phone" />
 
             <EditText
                 android:id="@+id/textInputMail"
@@ -56,18 +54,17 @@
                 android:layout_marginStart="9dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="9dp"
-                android:layout_weight="1"
-                android:inputType="textEmailAddress"
-                android:hint="@string/label_text_input_mail" />
+                android:hint="@string/label_text_input_mail"
+                android:inputType="textEmailAddress" />
 
             <!-- 더보기 버튼 -->
             <Button
                 android:id="@+id/btnMore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/btn_show_more"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:layout_gravity="center_horizontal" />
+                android:text="@string/btn_show_more" />
 
             <!-- 초기에는 보이지 않게 설정된 추가 3개의 EditText -->
             <EditText
@@ -77,21 +74,49 @@
                 android:layout_marginStart="9dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="9dp"
-                android:layout_weight="1"
                 android:hint="@string/label_text_input_birthday"
                 android:inputType="date"
                 android:visibility="gone" />
 
-            <EditText
-                android:id="@+id/textInputGender"
+            <LinearLayout
+                android:id="@+id/genderSelectorLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="9dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="9dp"
-                android:layout_weight="1"
-                android:hint="@string/label_text_input_gender"
-                android:visibility="gone" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/textGenderSelector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:text="@string/label_gender_selector" />
+
+                <RadioGroup
+                    android:id="@+id/genderRadioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/genderMale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_gender_selector_radio_male" />
+
+                    <RadioButton
+                        android:id="@+id/genderFemale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_gender_selector_radio_female" />
+                </RadioGroup>
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/textInputMemo"
@@ -101,8 +126,8 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="9dp"
                 android:layout_weight="1"
-                android:hint="@string/label_text_input_memo"
                 android:gravity="top"
+                android:hint="@string/label_text_input_memo"
                 android:inputType="textMultiLine"
                 android:visibility="gone" />
 
@@ -114,8 +139,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
         android:gravity="center"
+        android:orientation="horizontal"
         android:padding="16dp">
 
         <Button
@@ -129,8 +154,8 @@
             android:id="@+id/btnSave"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:text="@string/btn_save"
-            android:layout_marginStart="16dp" />
+            android:text="@string/btn_save" />
     </LinearLayout>
 </RelativeLayout>

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import devcon.learn.contacts.R
@@ -23,12 +24,12 @@ class RegisterActivity : AppCompatActivity() {
         val textInputPhone = findViewById<EditText>(R.id.textInputPhone)
         val textInputMail = findViewById<EditText>(R.id.textInputMail)
         val textInputBirthday = findViewById<EditText>(R.id.textInputBirthday)
-        val textInputGender = findViewById<EditText>(R.id.textInputGender)
+        val genderSelectorLayout = findViewById<LinearLayout>(R.id.genderSelectorLayout)
         val textInputMemo = findViewById<EditText>(R.id.textInputMemo)
 
         btnMore.setOnClickListener {
             textInputBirthday.visibility = View.VISIBLE
-            textInputGender.visibility = View.VISIBLE
+            genderSelectorLayout.visibility = View.VISIBLE
             textInputMemo.visibility = View.VISIBLE
             btnMore.visibility = View.GONE
         }
