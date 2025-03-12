@@ -36,7 +36,7 @@
                 android:layout_marginEnd="9dp"
                 android:layout_weight="1"
                 android:inputType="text"
-                android:hint="@string/label_text_input_name"/>
+                android:hint="@string/label_text_input_name" />
 
             <EditText
                 android:id="@+id/textInputPhone"
@@ -96,12 +96,14 @@
             <EditText
                 android:id="@+id/textInputMemo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:layout_marginStart="9dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="9dp"
                 android:layout_weight="1"
                 android:hint="@string/label_text_input_memo"
+                android:gravity="top"
+                android:inputType="textMultiLine"
                 android:visibility="gone" />
 
         </LinearLayout>
