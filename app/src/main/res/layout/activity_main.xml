@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            app:constraint_referenced_ids="edittext_contact_birthday, edittext_contact_memo, textview_contact_gender, radiogroup_gender" />
+            app:constraint_referenced_ids="textview_contact_birthday, edittext_contact_memo, textview_contact_gender, radiogroup_gender" />
 
         <ImageView
             android:id="@+id/imageview_contact_picture"
@@ -61,14 +61,13 @@
             android:paddingHorizontal="16dp"
             app:layout_constraintTop_toBottomOf="@id/edittext_contact_phone" />
 
-        <EditText
-            android:id="@+id/edittext_contact_birthday"
+        <TextView
+            android:id="@+id/textview_contact_birthday"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/background_contact_properties"
             android:hint="@string/hint_contact_birthday"
-            android:inputType="datetime"
             android:paddingHorizontal="16dp"
             app:layout_constraintTop_toBottomOf="@id/edittext_contact_mail" />
 
@@ -80,7 +79,7 @@
             android:background="@drawable/background_contact_properties"
             android:hint="@string/hint_contact_gender"
             android:paddingHorizontal="16dp"
-            app:layout_constraintTop_toBottomOf="@id/edittext_contact_birthday" />
+            app:layout_constraintTop_toBottomOf="@id/textview_contact_birthday" />
 
         <RadioGroup
             android:id="@+id/radiogroup_gender"

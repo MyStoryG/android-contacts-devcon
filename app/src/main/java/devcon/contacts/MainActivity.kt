@@ -4,21 +4,25 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.Group
+import com.google.android.material.datepicker.MaterialDatePicker
 import devcon.contacts.utils.showToast
 import devcon.learn.contacts.R
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 /*
     TODO
      1. 구성 변경시 UI 상태 관리
-     2. 생일 입력 방식 변경(EditText -> DatePicker)
-     3. 디자인 시스탬 추가(Typography, Color, Etc)
+     2. 디자인 시스탬 추가(Typography, Color, Etc)
  */
 class MainActivity : AppCompatActivity() {
     private val editTextName: EditText by lazy { findViewById(R.id.edittext_contact_name) }
     private val editTextPhone: EditText by lazy { findViewById(R.id.edittext_contact_phone) }
+    private val textViewBirthday: TextView by lazy { findViewById(R.id.textview_contact_birthday) }
     private val buttonMore: Button by lazy { findViewById(R.id.button_more) }
     private val buttonCancel: Button by lazy { findViewById(R.id.button_cancel) }
     private val buttonSave: Button by lazy { findViewById(R.id.button_save) }
@@ -28,6 +32,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        textViewBirthday.setOnClickListener {
+            showDatePicker {
+                val simpleDateFormat = SimpleDateFormat(DATE_FORMAT, Locale.getDefault())
+                textViewBirthday.text = simpleDateFormat.format(it)
+            }
+        }
         buttonMore.setOnClickListener {
             groupContactProperties.visibility = View.VISIBLE
             it.visibility = View.GONE
@@ -44,5 +54,21 @@ class MainActivity : AppCompatActivity() {
 
             showToast(message)
         }
+    }
+
+    private fun showDatePicker(onPositiveClickCallback: (Long) -> Unit) {
+        MaterialDatePicker.Builder.datePicker()
+            .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+            .build()
+            .apply {
+                addOnPositiveButtonClickListener { selection ->
+                    onPositiveClickCallback(selection)
+                }
+                show(supportFragmentManager, "DatePicker")
+            }
+    }
+
+    companion object {
+        private const val DATE_FORMAT = "yyyy.MM.dd"
     }
 }
