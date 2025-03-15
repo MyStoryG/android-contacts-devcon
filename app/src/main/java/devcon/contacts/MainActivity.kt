@@ -17,7 +17,6 @@ import java.util.Locale
 /*
     TODO
      1. 구성 변경시 UI 상태 관리
-     2. 디자인 시스탬 추가(Typography, Color, Etc)
  */
 class MainActivity : AppCompatActivity() {
     private val editTextName: EditText by lazy { findViewById(R.id.edittext_contact_name) }
