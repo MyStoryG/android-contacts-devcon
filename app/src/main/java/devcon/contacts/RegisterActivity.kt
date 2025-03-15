@@ -9,9 +9,7 @@ import android.widget.Toast
 import devcon.core.BaseActivity
 import devcon.learn.contacts.R
 
-class RegisterActivity :
-    BaseActivity(),
-    View.OnClickListener {
+class RegisterActivity : BaseActivity() {
     private lateinit var buttonMore: Button
     private lateinit var buttonCancel: Button
     private lateinit var buttonSave: Button
@@ -27,7 +25,7 @@ class RegisterActivity :
         initializeView()
     }
 
-    private fun initializeView() {
+    override fun initializeView() {
         buttonMore = findViewById(R.id.buttonMore)
         buttonCancel = findViewById(R.id.buttonCancel)
         buttonSave = findViewById(R.id.buttonSave)
