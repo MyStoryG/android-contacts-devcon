@@ -25,7 +25,7 @@ class MainActivity : BaseActivity() {
 
     private lateinit var contactAddResultLauncher: ActivityResultLauncher<Intent>
 
-    private val colorList = listOf(Color.BLUE, Color.RED, Color.RED, Color.GREEN, Color.LTGRAY)
+    private val colorList = listOf(Color.BLUE, Color.RED, Color.YELLOW, Color.GREEN, Color.LTGRAY)
 
     private var contactList: MutableList<Contact> = mutableListOf()
 
@@ -83,29 +83,38 @@ class MainActivity : BaseActivity() {
         }
 
         contactDataLayout.removeAllViews()
+        val inflater = LayoutInflater.from(this)
 
         for ((index, contact) in contactList.withIndex()) {
-            contactDataLayout.addView(makeContactView(contact, index))
+            val contactView = inflater.inflate(R.layout.user_contact, contactDataLayout, false)
+            val nameFirstText = contactView.findViewById<TextView>(R.id.nameFirstText)
+            val userPhoneNumber = contactView.findViewById<TextView>(R.id.userPhoneNumber)
+
+            val drawable = nameFirstText.background as? GradientDrawable
+            drawable?.setColor(colorList[index % 5])
+
+            // 이름의 첫 글자와 유저 번호 설정
+            nameFirstText.text = contact.name.first().toString()
+            userPhoneNumber.text = contact.phoneNumber
+            contactDataLayout.addView(contactView)
         }
     }
 
-    private fun makeContactView(
-        contact: Contact,
-        index: Int,
-    ): View? {
-        val inflater = LayoutInflater.from(this)
-
-        val contactView = inflater.inflate(R.layout.user_contact, contactDataLayout, false)
-        val nameFirstText = contactView.findViewById<TextView>(R.id.nameFirstText)
-        val userPhoneNumber = contactView.findViewById<TextView>(R.id.userPhoneNumber)
-
-        val drawable = nameFirstText.background as? GradientDrawable
-        drawable?.setColor(colorList[index % 5])
-
-        // 이름의 첫 글자와 유저 번호 설정
-        nameFirstText.text = contact.name.first().toString()
-        userPhoneNumber.text = contact.phoneNumber
-
-        return contactView
-    }
+//    private fun makeContactView(
+//        contact: Contact,
+//        index: Int,
+//    ): View? {
+//        val contactView = inflater.inflate(R.layout.user_contact, contactDataLayout, false)
+//        val nameFirstText = contactView.findViewById<TextView>(R.id.nameFirstText)
+//        val userPhoneNumber = contactView.findViewById<TextView>(R.id.userPhoneNumber)
+//
+//        val drawable = nameFirstText.background as? GradientDrawable
+//        drawable?.setColor(colorList[index % 5])
+//
+//        // 이름의 첫 글자와 유저 번호 설정
+//        nameFirstText.text = contact.name.first().toString()
+//        userPhoneNumber.text = contact.phoneNumber
+//
+//        return contactView
+//    }
 }
