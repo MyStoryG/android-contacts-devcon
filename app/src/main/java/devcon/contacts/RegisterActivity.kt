@@ -88,7 +88,7 @@ class RegisterActivity : BaseActivity() {
                         name = textInputName.text.toString(),
                         phoneNumber = textInputPhone.text.toString(),
                         mail = textInputMail.text.toString(),
-                        birthday = textInputMail.text.toString(),
+                        birthday = textInputBirthday.text.toString(),
                         gender =
                             when (genderRadioGroup.checkedRadioButtonId) {
                                 R.id.genderMale -> Gender.MALE
