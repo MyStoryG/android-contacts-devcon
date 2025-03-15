@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.Group
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -19,7 +18,7 @@ import java.util.Locale
     TODO
      1. 구성 변경시 UI 상태 관리
  */
-class MainActivity : AppCompatActivity() {
+class ContactAdditionActivity : AppCompatActivity() {
     private val editTextName: EditText by lazy { findViewById(R.id.edittext_contact_name) }
     private val editTextPhone: EditText by lazy { findViewById(R.id.edittext_contact_phone) }
     private val textViewBirthday: TextView by lazy { findViewById(R.id.textview_contact_birthday) }
@@ -30,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_contact_addition)
 
         textViewBirthday.setOnClickListener {
             showDatePicker {
