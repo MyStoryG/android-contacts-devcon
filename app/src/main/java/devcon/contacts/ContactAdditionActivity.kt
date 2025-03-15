@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RadioGroup
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.Group
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -22,10 +24,17 @@ import java.util.Locale
 class ContactAdditionActivity : AppCompatActivity() {
     private val editTextName: EditText by lazy { findViewById(R.id.edittext_contact_name) }
     private val editTextPhone: EditText by lazy { findViewById(R.id.edittext_contact_phone) }
+    private val editTextMail: EditText by lazy { findViewById(R.id.edittext_contact_mail) }
+    private val editTextMemo: EditText by lazy { findViewById(R.id.edittext_contact_memo) }
+
     private val textViewBirthday: TextView by lazy { findViewById(R.id.textview_contact_birthday) }
+
+    private val radioGroupGender: RadioGroup by lazy { findViewById(R.id.radiogroup_gender) }
+
     private val buttonMore: Button by lazy { findViewById(R.id.button_more) }
     private val buttonCancel: Button by lazy { findViewById(R.id.button_cancel) }
     private val buttonSave: Button by lazy { findViewById(R.id.button_save) }
+
     private val groupContactProperties: Group by lazy { findViewById(R.id.group_contact_properties) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +52,12 @@ class ContactAdditionActivity : AppCompatActivity() {
             it.visibility = View.GONE
         }
         buttonCancel.setOnClickListener {
-            showToast(R.string.toast_cancel_contact)
+            if (hasPendingEdits()) {
+                showPendingEditsDialog()
+            } else {
+                showToast(R.string.toast_cancel_contact)
+                finish()
+            }
         }
         buttonSave.setOnClickListener {
             when {
@@ -60,6 +74,31 @@ class ContactAdditionActivity : AppCompatActivity() {
                 else -> showToast(R.string.toast_save_contact)
             }
         }
+    }
+
+    private fun hasPendingEdits(): Boolean {
+        val isNameNotEmpty = editTextName.text.isNotEmpty()
+        val isPhoneNotEmpty = editTextPhone.text.isNotEmpty()
+        val isMailNotEmpty = editTextMail.text.isNotEmpty()
+        val isMemoNotEmpty = editTextMemo.text.isNotEmpty()
+        val isBirthdayNotEmpty = textViewBirthday.text.isNotEmpty()
+        val isGenderChecked = radioGroupGender.checkedRadioButtonId != View.NO_ID
+
+        return isNameNotEmpty || isPhoneNotEmpty || isMailNotEmpty || isMemoNotEmpty || isBirthdayNotEmpty || isGenderChecked
+    }
+
+    private fun showPendingEditsDialog() {
+        AlertDialog.Builder(this)
+            .setMessage(R.string.dialog_message_has_pending_edits)
+            .setPositiveButton(R.string.exit) { dialog, _ ->
+                dialog.dismiss()
+                showToast(R.string.toast_cancel_contact)
+                finish()
+            }
+            .setNegativeButton(R.string.edit) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
     private fun showDatePicker(onPositiveClickCallback: (Long) -> Unit) {
