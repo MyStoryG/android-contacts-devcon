@@ -9,6 +9,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.Group
 import com.google.android.material.datepicker.MaterialDatePicker
+import devcon.contacts.utils.showSoftKeyboard
 import devcon.contacts.utils.showToast
 import devcon.learn.contacts.R
 import java.text.SimpleDateFormat
@@ -45,13 +46,19 @@ class MainActivity : AppCompatActivity() {
             showToast(R.string.toast_cancel_contact)
         }
         buttonSave.setOnClickListener {
-            @StringRes val message = when {
-                editTextName.text.isEmpty() -> R.string.toast_required_name
-                editTextPhone.text.isEmpty() -> R.string.toast_required_phone
-                else -> R.string.toast_save_contact
-            }
+            when {
+                editTextName.text.isEmpty() -> {
+                    showToast(R.string.toast_required_name)
+                    editTextName.showSoftKeyboard()
+                }
 
-            showToast(message)
+                editTextPhone.text.isEmpty() -> {
+                    showToast(R.string.toast_required_phone)
+                    editTextPhone.showSoftKeyboard()
+                }
+
+                else -> showToast(R.string.toast_save_contact)
+            }
         }
     }
 
