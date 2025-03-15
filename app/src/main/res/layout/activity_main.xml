@@ -1,160 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:padding="@dimen/padding_large">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_contact"
+    <ScrollView
+        android:id="@+id/scrollview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/padding_large">
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/button_cancel"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/group_contact_properties"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:constraint_referenced_ids="textview_contact_birthday, edittext_contact_memo, textview_contact_gender, radiogroup_gender" />
-
-        <ImageView
-            android:id="@+id/imageview_contact_picture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/image_contact_picture"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/edittext_contact_name"
-            style="@style/Theme.Contacts.Register.Properties"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_contact"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_large"
-            android:layout_marginTop="@dimen/margin_extra_large"
-            android:hint="@string/hint_contact_name"
-            android:inputType="text"
-            app:layout_constraintTop_toBottomOf="@id/imageview_contact_picture" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/edittext_contact_phone"
-            style="@style/Theme.Contacts.Register.Properties"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_large"
-            android:layout_marginTop="@dimen/margin_large"
-            android:hint="@string/hint_contact_phone"
-            android:inputType="phone"
-            app:layout_constraintTop_toBottomOf="@id/edittext_contact_name" />
-
-        <EditText
-            android:id="@+id/edittext_contact_mail"
-            style="@style/Theme.Contacts.Register.Properties"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_large"
-            android:layout_marginTop="@dimen/margin_large"
-            android:hint="@string/hint_contact_mail"
-            android:inputType="textEmailAddress"
-            app:layout_constraintTop_toBottomOf="@id/edittext_contact_phone" />
-
-        <TextView
-            android:id="@+id/textview_contact_birthday"
-            style="@style/Theme.Contacts.Register.Properties"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_large"
-            android:layout_marginTop="@dimen/margin_large"
-            android:hint="@string/hint_contact_birthday"
-            app:layout_constraintTop_toBottomOf="@id/edittext_contact_mail" />
-
-        <TextView
-            android:id="@+id/textview_contact_gender"
-            style="@style/Theme.Contacts.Register.Properties"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_large"
-            android:layout_marginTop="@dimen/margin_large"
-            android:hint="@string/hint_contact_gender"
-            app:layout_constraintTop_toBottomOf="@id/textview_contact_birthday" />
-
-        <RadioGroup
-            android:id="@+id/radiogroup_gender"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:gravity="end"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@id/textview_contact_gender"
-            app:layout_constraintEnd_toEndOf="@id/textview_contact_gender"
-            app:layout_constraintTop_toTopOf="@id/textview_contact_gender">
-
-            <RadioButton
-                android:id="@+id/radiobutton_female"
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/group_contact_properties"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_large"
-                android:text="@string/female"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-                android:textColor="@color/text_primary" />
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="textview_contact_birthday, edittext_contact_memo, textview_contact_gender, radiogroup_gender" />
 
-            <RadioButton
-                android:id="@+id/radiobutton_male"
+            <ImageView
+                android:id="@+id/imageview_contact_picture"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_large"
-                android:text="@string/male"
+                android:layout_height="wrap_content"
+                android:src="@drawable/image_contact_picture"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/edittext_contact_name"
+                style="@style/Theme.Contacts.Register.Properties"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_large"
+                android:layout_marginTop="@dimen/margin_extra_large"
+                android:hint="@string/hint_contact_name"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@id/imageview_contact_picture" />
+
+            <EditText
+                android:id="@+id/edittext_contact_phone"
+                style="@style/Theme.Contacts.Register.Properties"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:hint="@string/hint_contact_phone"
+                android:inputType="phone"
+                app:layout_constraintTop_toBottomOf="@id/edittext_contact_name" />
+
+            <EditText
+                android:id="@+id/edittext_contact_mail"
+                style="@style/Theme.Contacts.Register.Properties"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:hint="@string/hint_contact_mail"
+                android:inputType="textEmailAddress"
+                app:layout_constraintTop_toBottomOf="@id/edittext_contact_phone" />
+
+            <TextView
+                android:id="@+id/textview_contact_birthday"
+                style="@style/Theme.Contacts.Register.Properties"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:hint="@string/hint_contact_birthday"
+                app:layout_constraintTop_toBottomOf="@id/edittext_contact_mail" />
+
+            <TextView
+                android:id="@+id/textview_contact_gender"
+                style="@style/Theme.Contacts.Register.Properties"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:hint="@string/hint_contact_gender"
+                app:layout_constraintTop_toBottomOf="@id/textview_contact_birthday" />
+
+            <RadioGroup
+                android:id="@+id/radiogroup_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="end"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@id/textview_contact_gender"
+                app:layout_constraintEnd_toEndOf="@id/textview_contact_gender"
+                app:layout_constraintTop_toTopOf="@id/textview_contact_gender">
+
+                <RadioButton
+                    android:id="@+id/radiobutton_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:text="@string/female"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                    android:textColor="@color/text_primary" />
+
+                <RadioButton
+                    android:id="@+id/radiobutton_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:text="@string/male"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                    android:textColor="@color/text_primary" />
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/edittext_contact_memo"
+                style="@style/Theme.Contacts.Register.Properties"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:hint="@string/hint_contact_memo"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@id/textview_contact_gender" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_more"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/more"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-                android:textColor="@color/text_primary" />
-        </RadioGroup>
+                android:textColor="@color/text_primary"
+                app:icon="@drawable/icon_expand_more"
+                app:iconGravity="textEnd"
+                app:iconSize="@dimen/icon_size_medium"
+                app:iconTint="@color/icon_primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edittext_contact_mail" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-        <EditText
-            android:id="@+id/edittext_contact_memo"
-            style="@style/Theme.Contacts.Register.Properties"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_large"
-            android:layout_marginTop="@dimen/margin_large"
-            android:hint="@string/hint_contact_memo"
-            android:inputType="text"
-            app:layout_constraintTop_toBottomOf="@id/textview_contact_gender" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_cancel"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/height_medium"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:text="@string/cancel"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+        android:textColor="@color/text_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_save"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_more"
-            style="@style/Widget.Material3.Button.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/more"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-            android:textColor="@color/text_primary"
-            app:icon="@drawable/icon_expand_more"
-            app:iconGravity="textEnd"
-            app:iconSize="@dimen/icon_size_medium"
-            app:iconTint="@color/icon_primary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edittext_contact_mail" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_cancel"
-            style="@style/Widget.Material3.Button.TextButton"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/height_medium"
-            android:layout_marginEnd="@dimen/margin_large"
-            android:text="@string/cancel"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-            android:textColor="@color/text_primary"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/button_save"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_save"
-            style="@style/Widget.Material3.Button.TextButton"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/height_medium"
-            android:text="@string/save"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-            android:textColor="@color/text_primary"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/button_cancel"
-            app:layout_constraintTop_toTopOf="@+id/button_cancel" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_save"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/height_medium"
+        android:text="@string/save"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+        android:textColor="@color/text_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_cancel"
+        app:layout_constraintTop_toTopOf="@+id/button_cancel" />
+</androidx.constraintlayout.widget.ConstraintLayout>
