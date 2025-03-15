@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import devcon.core.BaseActivity
 import devcon.domain.Contact
 import devcon.learn.contacts.R
@@ -30,7 +31,9 @@ class RegisterActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_resgister)
+
         initializeView()
+        addBackPressedDispatcher()
     }
 
     override fun initializeView() {
@@ -50,6 +53,17 @@ class RegisterActivity : BaseActivity() {
         listOf(buttonMore, buttonCancel, buttonSave).forEach { it.setOnClickListener(this) }
     }
 
+    private fun addBackPressedDispatcher() {
+        onBackPressedDispatcher.addCallback(
+            this,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    cancelAddContact()
+                }
+            },
+        )
+    }
+
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.buttonMore -> {
@@ -58,17 +72,7 @@ class RegisterActivity : BaseActivity() {
             }
 
             R.id.buttonCancel -> {
-                if (anyFieldsFilled()) {
-                    showDialog(
-                        message = "작성 중인 내용이 있습니다.\n정말 나가시겠습니까?",
-                        confirmText = "나가기",
-                        cancelText = "작성하기",
-                        onCancel = { return@showDialog },
-                        onSuccess = { cancelAddContact() },
-                    )
-                } else {
-                    cancelAddContact()
-                }
+                cancelAddContact()
             }
 
             R.id.buttonSave -> {
@@ -97,6 +101,20 @@ class RegisterActivity : BaseActivity() {
     }
 
     private fun cancelAddContact() {
+        if (anyFieldsFilled()) {
+            showDialog(
+                message = "작성 중인 내용이 있습니다.\n정말 나가시겠습니까?",
+                confirmText = "나가기",
+                cancelText = "작성하기",
+                onCancel = { return@showDialog },
+                onSuccess = { finishAndShowToast() },
+            )
+        } else {
+            finishAndShowToast()
+        }
+    }
+
+    private fun finishAndShowToast() {
         val cancelToast = Toast.makeText(this, "취소 되었습니다.", Toast.LENGTH_SHORT)
         cancelToast.show()
         setResult(Activity.RESULT_CANCELED)
