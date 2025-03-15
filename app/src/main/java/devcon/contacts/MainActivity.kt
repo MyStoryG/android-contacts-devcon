@@ -6,7 +6,6 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import devcon.learn.contacts.R
 
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,10 +14,11 @@ class MainActivity : AppCompatActivity() {
         val btnMore = findViewById<Button>(R.id.btnAddContact)
 
         btnMore.setOnClickListener {
-            val intent = Intent(
-                this@MainActivity,
-                RegisterActivity::class.java
-            )
+            val intent =
+                Intent(
+                    this@MainActivity,
+                    RegisterActivity::class.java,
+                )
 
             startActivity(intent)
         }
