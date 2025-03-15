@@ -1,6 +1,7 @@
 package devcon.contacts
 
 import android.app.Activity
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -8,12 +9,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.RadioGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import devcon.common.padZero
 import devcon.core.BaseActivity
 import devcon.domain.Contact
 import devcon.domain.Gender
 import devcon.learn.contacts.R
+import java.util.Calendar
 
 class RegisterActivity : BaseActivity() {
     private lateinit var buttonMore: Button
@@ -24,7 +28,8 @@ class RegisterActivity : BaseActivity() {
     private lateinit var textInputPhone: EditText
     private lateinit var textInputMail: EditText
     private lateinit var additionalDataLayout: LinearLayout
-    private lateinit var textInputBirthday: EditText
+    private lateinit var birthdayInputContainer: LinearLayout
+    private lateinit var birthdayInputData: TextView
     private lateinit var genderRadioGroup: RadioGroup
     private lateinit var textInputMemo: EditText
 
@@ -45,13 +50,19 @@ class RegisterActivity : BaseActivity() {
         textInputName = findViewById(R.id.textInputName)
         textInputPhone = findViewById(R.id.textInputPhone)
         textInputMail = findViewById(R.id.textInputMail)
-        textInputBirthday = findViewById(R.id.textInputBirthday)
+        birthdayInputContainer = findViewById(R.id.birthdayInputContainer)
+        birthdayInputData = findViewById(R.id.birthdayInputData)
         genderRadioGroup = findViewById(R.id.genderRadioGroup)
         textInputMemo = findViewById(R.id.textInputMemo)
 
         additionalDataLayout = findViewById(R.id.additionalDataLayout)
 
-        listOf(buttonMore, buttonCancel, buttonSave).forEach { it.setOnClickListener(this) }
+        listOf(
+            buttonMore,
+            buttonCancel,
+            buttonSave,
+            birthdayInputContainer,
+        ).forEach { it.setOnClickListener(this) }
     }
 
     private fun addBackPressedDispatcher() {
@@ -67,6 +78,13 @@ class RegisterActivity : BaseActivity() {
 
     override fun onClick(v: View?) {
         when (v?.id) {
+            R.id.birthdayInputContainer -> {
+                showDatePickerDialog { year, month, day ->
+                    val dateString = "$year.${month.padZero(2)}.${day.padZero(2)}"
+                    birthdayInputData.text = dateString
+                }
+            }
+
             R.id.buttonMore -> {
                 additionalDataLayout.visibility = View.VISIBLE
                 buttonMore.visibility = View.GONE
@@ -88,7 +106,7 @@ class RegisterActivity : BaseActivity() {
                         name = textInputName.text.toString(),
                         phoneNumber = textInputPhone.text.toString(),
                         mail = textInputMail.text.toString(),
-                        birthday = textInputBirthday.text.toString(),
+                        birthday = birthdayInputData.text.toString(),
                         gender =
                             when (genderRadioGroup.checkedRadioButtonId) {
                                 R.id.genderMale -> Gender.MALE
@@ -108,6 +126,17 @@ class RegisterActivity : BaseActivity() {
 
             else -> {}
         }
+    }
+
+    private fun showDatePickerDialog(onSuccess: (Int, Int, Int) -> Unit = { _, _, _ -> }) {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
+            onSuccess(selectedYear, selectedMonth, selectedDay)
+        }, year, month, day).show()
     }
 
     private fun cancelAddContact() {
@@ -144,7 +173,7 @@ class RegisterActivity : BaseActivity() {
                 .toString()
                 .trim()
                 .isNotEmpty() ||
-            textInputBirthday.text
+            birthdayInputData.text
                 .toString()
                 .trim()
                 .isNotEmpty() ||

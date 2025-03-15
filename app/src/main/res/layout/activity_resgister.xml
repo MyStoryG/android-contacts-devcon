@@ -70,15 +70,27 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
-                <EditText
-                    android:id="@+id/textInputBirthday"
+                <LinearLayout
+                    android:id="@+id/birthdayInputContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="9dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="9dp"
-                    android:hint="@string/label_text_input_birthday"
-                    android:inputType="date" />
+                    android:layout_marginHorizontal="9dp"
+                    android:layout_marginTop="24dp">
+
+                    <TextView
+                        android:id="@+id/textBirthday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/label_text_birthday" />
+
+                    <TextView
+                        android:id="@+id/birthdayInputData"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/genderSelectorLayout"
