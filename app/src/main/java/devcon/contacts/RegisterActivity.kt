@@ -50,6 +50,7 @@ class RegisterActivity : BaseActivity() {
             R.id.buttonCancel -> {
                 val cancelToast = Toast.makeText(this, "취소 되었습니다.", Toast.LENGTH_SHORT)
                 cancelToast.show()
+                setResult(Activity.RESULT_CANCELED)
                 finish()
             }
 
