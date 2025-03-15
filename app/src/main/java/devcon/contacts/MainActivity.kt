@@ -86,7 +86,7 @@ class MainActivity : BaseActivity() {
         val inflater = LayoutInflater.from(this)
 
         for ((index, contact) in contactList.withIndex()) {
-            val contactView = inflater.inflate(R.layout.user_contact, contactDataLayout, false)
+            val contactView = inflater.inflate(R.layout.user_contact_summary, contactDataLayout, false)
             val nameFirstText = contactView.findViewById<TextView>(R.id.nameFirstText)
             val userPhoneNumber = contactView.findViewById<TextView>(R.id.userPhoneNumber)
 

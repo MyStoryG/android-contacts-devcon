@@ -45,14 +45,15 @@ class DetailActivity : BaseActivity() {
                     }
 
                 if (hasValue) {
-                    val textView =
-                        TextView(this).apply {
-                            text = key
-                            textSize = 16f
-                            setPadding(0, 8, 0, 8)
-                        }
+                    val contactDetailData =
+                        inflater.inflate(R.layout.user_contact_detail, contactDataLayout, false)
+                    val label = contactDetailData.findViewById<TextView>(R.id.label)
+                    val data = contactDetailData.findViewById<TextView>(R.id.data)
 
-                    contactDataLayout.addView(textView)
+                    label.text = key
+                    data.text = value.toString()
+
+                    contactDataLayout.addView(contactDetailData)
                 }
             }
         }
