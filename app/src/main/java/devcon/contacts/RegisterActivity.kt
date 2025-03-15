@@ -6,10 +6,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import devcon.core.BaseActivity
 import devcon.learn.contacts.R
 
-class RegisterActivity : AppCompatActivity(), View.OnClickListener {
+class RegisterActivity :
+    BaseActivity(),
+    View.OnClickListener {
     private lateinit var buttonMore: Button
     private lateinit var buttonCancel: Button
     private lateinit var buttonSave: Button
@@ -52,15 +54,11 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.buttonSave -> {
                 if (!areRequiredFieldsFilled()) {
-                    val missingFieldToast = Toast.makeText(
-                        this, "이름과 전화번호는 필수입니다.", Toast.LENGTH_SHORT
-                    )
-                    missingFieldToast.show()
+                    showToast("이름과 전화번호는 필수입니다.")
                     return
                 }
 
-                val successSaveToast = Toast.makeText(this, "저장이 완료 되었습니다.", Toast.LENGTH_SHORT)
-                successSaveToast.show()
+                showToast("저장이 완료 되었습니다.")
                 finish()
             }
 
