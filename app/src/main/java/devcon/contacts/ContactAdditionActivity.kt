@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.Group
 import com.google.android.material.datepicker.MaterialDatePicker
+import devcon.contacts.Constants.DATE_FORMAT_BIRTHDAY
 import devcon.contacts.utils.showSoftKeyboard
 import devcon.contacts.utils.showToast
 import devcon.learn.contacts.R
@@ -33,7 +34,7 @@ class ContactAdditionActivity : AppCompatActivity() {
 
         textViewBirthday.setOnClickListener {
             showDatePicker {
-                val simpleDateFormat = SimpleDateFormat(DATE_FORMAT, Locale.getDefault())
+                val simpleDateFormat = SimpleDateFormat(DATE_FORMAT_BIRTHDAY, Locale.getDefault())
                 textViewBirthday.text = simpleDateFormat.format(it)
             }
         }
@@ -71,9 +72,5 @@ class ContactAdditionActivity : AppCompatActivity() {
                 }
                 show(supportFragmentManager, "DatePicker")
             }
-    }
-
-    companion object {
-        private const val DATE_FORMAT = "yyyy.MM.dd"
     }
 }
