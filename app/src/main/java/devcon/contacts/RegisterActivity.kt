@@ -45,31 +45,32 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.buttonCancel -> {
-                val cancelToast =
-                    Toast.makeText(this.applicationContext, "취소 되었습니다.", Toast.LENGTH_SHORT)
+                val cancelToast = Toast.makeText(this, "취소 되었습니다.", Toast.LENGTH_SHORT)
                 cancelToast.show()
                 finish()
             }
 
             R.id.buttonSave -> {
-                val name = textInputName.text
-                val phoneNumber = textInputPhone.text
-
-                if (name.isEmpty() || phoneNumber.isEmpty()) {
+                if (!areRequiredFieldsFilled()) {
                     val missingFieldToast = Toast.makeText(
-                        this.applicationContext, "이름과 전화번호는 필수입니다.", Toast.LENGTH_SHORT
+                        this, "이름과 전화번호는 필수입니다.", Toast.LENGTH_SHORT
                     )
                     missingFieldToast.show()
                     return
                 }
 
-                val successSaveToast =
-                    Toast.makeText(this.applicationContext, "저장이 완료 되었습니다.", Toast.LENGTH_SHORT)
+                val successSaveToast = Toast.makeText(this, "저장이 완료 되었습니다.", Toast.LENGTH_SHORT)
                 successSaveToast.show()
                 finish()
             }
 
             else -> {}
         }
+    }
+
+    private fun areRequiredFieldsFilled(): Boolean {
+        val name = textInputName.text.toString().trim()
+        val phone = textInputPhone.text.toString().trim()
+        return name.isNotEmpty() && phone.isNotEmpty()
     }
 }
