@@ -96,11 +96,11 @@ class RegisterActivity : BaseActivity() {
 
             R.id.buttonSave -> {
                 if (!areRequiredFieldsFilled()) {
-                    showToast("이름과 전화번호는 필수입니다.")
+                    showToast(getString(R.string.toast_need_more_info))
                     return
                 }
 
-                showToast("저장이 완료 되었습니다.")
+                showToast(getString(R.string.toast_save))
                 val contact =
                     Contact(
                         name = textInputName.text.toString(),
@@ -142,9 +142,9 @@ class RegisterActivity : BaseActivity() {
     private fun cancelAddContact() {
         if (anyFieldsFilled()) {
             showDialog(
-                message = "작성 중인 내용이 있습니다.\n정말 나가시겠습니까?",
-                confirmText = "나가기",
-                cancelText = "작성하기",
+                message = getString(R.string.dialog_message_leave_contact_add),
+                confirmText = getString(R.string.button_leave),
+                cancelText = getString(R.string.button_write),
                 onCancel = { return@showDialog },
                 onSuccess = { finishAndShowToast() },
             )
@@ -154,7 +154,7 @@ class RegisterActivity : BaseActivity() {
     }
 
     private fun finishAndShowToast() {
-        val cancelToast = Toast.makeText(this, "취소 되었습니다.", Toast.LENGTH_SHORT)
+        val cancelToast = Toast.makeText(this, getString(R.string.toast_cancel), Toast.LENGTH_SHORT)
         cancelToast.show()
         setResult(Activity.RESULT_CANCELED)
         finish()

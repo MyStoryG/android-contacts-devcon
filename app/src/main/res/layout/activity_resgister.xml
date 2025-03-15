@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="9dp"
                 android:layout_marginTop="24dp"
-                android:hint="@string/label_text_input_name"
+                android:hint="@string/label_name"
                 android:inputType="text" />
 
             <EditText
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="9dp"
                 android:layout_marginTop="24dp"
-                android:hint="@string/label_text_input_phone"
+                android:hint="@string/label_phone"
                 android:inputType="phone" />
 
             <EditText
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="9dp"
                 android:layout_marginTop="24dp"
-                android:hint="@string/label_text_input_mail"
+                android:hint="@string/label_mail"
                 android:inputType="textEmailAddress" />
 
             <!-- 더보기 버튼 -->
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:text="@string/btn_show_more" />
+                android:text="@string/button_show_more" />
 
             <LinearLayout
                 android:id="@+id/additionalDataLayout"
@@ -82,7 +82,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/label_text_birthday" />
+                        android:text="@string/label_birthday" />
 
                     <TextView
                         android:id="@+id/birthdayInputData"
@@ -108,7 +108,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="start"
-                        android:text="@string/label_gender_selector" />
+                        android:text="@string/label_gender" />
 
                     <RadioGroup
                         android:id="@+id/genderRadioGroup"
@@ -121,13 +121,13 @@
                             android:id="@+id/genderMale"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/label_gender_selector_radio_male" />
+                            android:text="@string/male" />
 
                         <RadioButton
                             android:id="@+id/genderFemale"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/label_gender_selector_radio_female" />
+                            android:text="@string/female" />
                     </RadioGroup>
                 </LinearLayout>
 
@@ -140,7 +140,7 @@
                     android:layout_marginEnd="9dp"
                     android:layout_weight="1"
                     android:gravity="top"
-                    android:hint="@string/label_text_input_memo"
+                    android:hint="@string/label_input_memo"
                     android:inputType="textMultiLine" />
             </LinearLayout>
 
@@ -162,7 +162,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/btn_cancel" />
+            android:text="@string/button_cancel" />
 
         <Button
             android:id="@+id/buttonSave"
@@ -170,6 +170,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:text="@string/btn_save" />
+            android:text="@string/button_save" />
     </LinearLayout>
 </RelativeLayout>

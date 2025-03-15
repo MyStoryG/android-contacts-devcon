@@ -50,7 +50,7 @@ class DetailActivity : BaseActivity() {
                     val label = contactDetailData.findViewById<TextView>(R.id.label)
                     val data = contactDetailData.findViewById<TextView>(R.id.data)
 
-                    label.text = key
+                    label.text = key.toString()
                     data.text = value.toString()
 
                     contactDataLayout.addView(contactDetailData)

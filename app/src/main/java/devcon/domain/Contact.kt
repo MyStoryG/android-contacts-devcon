@@ -1,6 +1,7 @@
 package devcon.domain
 
 import android.os.Parcelable
+import devcon.learn.contacts.R
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -12,13 +13,13 @@ data class Contact(
     val gender: Gender,
     val memo: String,
 ) : Parcelable {
-    fun toDisplayData(): Map<String, Any?> =
+    fun toDisplayData(): Map<Int, Any?> =
         mapOf(
-            "이름" to name,
-            "전화번호" to phoneNumber,
-            "메일" to mail,
-            "생일" to birthday,
-            "성별" to gender,
-            "메모" to memo,
+            R.string.label_name to name,
+            R.string.label_phone to phoneNumber,
+            R.string.label_mail to mail,
+            R.string.label_birthday to birthday,
+            R.string.label_gender to gender,
+            R.string.label_input_memo to memo,
         )
 }

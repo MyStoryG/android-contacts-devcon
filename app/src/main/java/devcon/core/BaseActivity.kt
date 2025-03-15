@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import devcon.learn.contacts.R
 
 abstract class BaseActivity :
     AppCompatActivity(),
@@ -30,10 +31,10 @@ abstract class BaseActivity :
             }.apply {
                 message?.let { setMessage(message) }
             }.setPositiveButton(
-                confirmText ?: "ok",
+                confirmText ?: getString(R.string.button_confirm),
             ) { _, _ -> onSuccess?.invoke() }
             .setNegativeButton(
-                cancelText ?: "cancel",
+                cancelText ?: getString(R.string.button_cancel),
             ) { _, _ -> onCancel?.invoke() }
             .create()
             .show()
