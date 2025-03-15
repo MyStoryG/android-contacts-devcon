@@ -96,6 +96,11 @@ class MainActivity : BaseActivity() {
             // 이름의 첫 글자와 유저 번호 설정
             nameFirstText.text = contact.name.first().toString()
             userPhoneNumber.text = contact.phoneNumber
+            contactView.setOnClickListener {
+                val intent = DetailActivity.newIntent(this, contact)
+                startActivity(intent)
+            }
+
             contactDataLayout.addView(contactView)
         }
     }
