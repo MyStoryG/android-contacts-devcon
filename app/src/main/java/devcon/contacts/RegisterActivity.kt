@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import devcon.core.BaseActivity
 import devcon.domain.Contact
+import devcon.domain.Gender
 import devcon.learn.contacts.R
 
 class RegisterActivity : BaseActivity() {
@@ -86,6 +87,15 @@ class RegisterActivity : BaseActivity() {
                     Contact(
                         name = textInputName.text.toString(),
                         phoneNumber = textInputPhone.text.toString(),
+                        mail = textInputMail.text.toString(),
+                        birthday = textInputMail.text.toString(),
+                        gender =
+                            when (genderRadioGroup.checkedRadioButtonId) {
+                                R.id.genderMale -> Gender.MALE
+                                R.id.genderFemale -> Gender.FEMALE
+                                else -> Gender.NONE
+                            },
+                        memo = textInputMemo.text.toString(),
                     )
 
                 val resultIntent =

@@ -7,10 +7,10 @@ import kotlinx.parcelize.Parcelize
 data class Contact(
     val name: String,
     val phoneNumber: String,
-    val mail: String? = null,
-    val birthday: String? = null,
-    val gender: Gender? = null,
-    val memo: String? = null,
+    val mail: String,
+    val birthday: String,
+    val gender: Gender,
+    val memo: String,
 ) : Parcelable {
     fun toDisplayData(): Map<String, Any?> =
         mapOf(

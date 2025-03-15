@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import devcon.core.BaseActivity
 import devcon.domain.Contact
+import devcon.domain.Gender
 import devcon.learn.contacts.R
 
 class DetailActivity : BaseActivity() {
@@ -36,14 +37,23 @@ class DetailActivity : BaseActivity() {
 
         contact.toDisplayData().forEach { (key, value) ->
             value?.let {
-                val textView =
-                    TextView(this).apply {
-                        text = key
-                        textSize = 16f
-                        setPadding(0, 8, 0, 8)
+                val hasValue =
+                    when (value) {
+                        is Gender -> value != Gender.NONE
+                        is String -> value.isNotEmpty()
+                        else -> false
                     }
 
-                contactDataLayout.addView(textView)
+                if (hasValue) {
+                    val textView =
+                        TextView(this).apply {
+                            text = key
+                            textSize = 16f
+                            setPadding(0, 8, 0, 8)
+                        }
+
+                    contactDataLayout.addView(textView)
+                }
             }
         }
     }
