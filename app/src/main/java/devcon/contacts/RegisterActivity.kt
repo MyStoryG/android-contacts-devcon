@@ -1,5 +1,7 @@
 package devcon.contacts
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -7,6 +9,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import devcon.core.BaseActivity
+import devcon.domain.Contact
 import devcon.learn.contacts.R
 
 class RegisterActivity : BaseActivity() {
@@ -57,6 +60,17 @@ class RegisterActivity : BaseActivity() {
                 }
 
                 showToast("저장이 완료 되었습니다.")
+                val contact =
+                    Contact(
+                        name = textInputName.text.toString(),
+                        phoneNumber = textInputPhone.text.toString(),
+                    )
+
+                val resultIntent =
+                    Intent().apply {
+                        putExtra("CONTACT", contact)
+                    }
+                setResult(Activity.RESULT_OK, resultIntent)
                 finish()
             }
 
