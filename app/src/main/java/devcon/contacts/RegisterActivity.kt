@@ -15,9 +15,9 @@ class RegisterActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_resgister)
 
-        val btnMore = findViewById<Button>(R.id.btnMore)
-        val btnCancel = findViewById<Button>(R.id.btnCancel)
-        val btnSave = findViewById<Button>(R.id.btnSave)
+        val buttonMore = findViewById<Button>(R.id.buttonMore)
+        val buttonCancel = findViewById<Button>(R.id.buttonCancel)
+        val buttonSave = findViewById<Button>(R.id.buttonSave)
 
         // 추후 2단계 과제를 위해 사용 예정
         val textInputName = findViewById<EditText>(R.id.textInputName)
@@ -27,20 +27,20 @@ class RegisterActivity : AppCompatActivity() {
         val genderSelectorLayout = findViewById<LinearLayout>(R.id.genderSelectorLayout)
         val textInputMemo = findViewById<EditText>(R.id.textInputMemo)
 
-        btnMore.setOnClickListener {
+        buttonMore.setOnClickListener {
             textInputBirthday.visibility = View.VISIBLE
             genderSelectorLayout.visibility = View.VISIBLE
             textInputMemo.visibility = View.VISIBLE
-            btnMore.visibility = View.GONE
+            buttonMore.visibility = View.GONE
         }
 
-        btnCancel.setOnClickListener {
+        buttonCancel.setOnClickListener {
             val cancelToast = Toast.makeText(this.applicationContext, "취소 되었습니다.", Toast.LENGTH_SHORT)
             cancelToast.show()
             finish()
         }
 
-        btnSave.setOnClickListener {
+        buttonSave.setOnClickListener {
             val name = textInputName.text
             val phoneNumber = textInputPhone.text
 

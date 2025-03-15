@@ -59,7 +59,7 @@
 
             <!-- 더보기 버튼 -->
             <Button
-                android:id="@+id/btnMore"
+                android:id="@+id/buttonMore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -144,14 +144,14 @@
         android:padding="16dp">
 
         <Button
-            android:id="@+id/btnCancel"
+            android:id="@+id/buttonCancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/btn_cancel" />
 
         <Button
-            android:id="@+id/btnSave"
+            android:id="@+id/buttonSave"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
