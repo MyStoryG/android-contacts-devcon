@@ -99,7 +99,8 @@
                     android:layout_marginEnd="@dimen/margin_large"
                     android:text="@string/female"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-                    android:textColor="@color/text_primary" />
+                    android:textColor="@color/white"
+                    app:buttonTint="@color/white" />
 
                 <RadioButton
                     android:id="@+id/radiobutton_male"
@@ -108,7 +109,8 @@
                     android:layout_marginEnd="@dimen/margin_large"
                     android:text="@string/male"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-                    android:textColor="@color/text_primary" />
+                    android:textColor="@color/white"
+                    app:buttonTint="@color/white" />
             </RadioGroup>
 
             <EditText
