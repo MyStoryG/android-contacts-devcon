@@ -66,72 +66,77 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/btn_show_more" />
 
-            <!-- 초기에는 보이지 않게 설정된 추가 3개의 EditText -->
-            <EditText
-                android:id="@+id/textInputBirthday"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="9dp"
-                android:hint="@string/label_text_input_birthday"
-                android:inputType="date"
-                android:visibility="gone" />
-
             <LinearLayout
-                android:id="@+id/genderSelectorLayout"
+                android:id="@+id/additionalDataLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="9dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
+                android:orientation="vertical"
                 android:visibility="gone">
 
-                <TextView
-                    android:id="@+id/textGenderSelector"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/textInputBirthday"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="start"
-                    android:text="@string/label_gender_selector" />
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="9dp"
+                    android:hint="@string/label_text_input_birthday"
+                    android:inputType="date" />
 
-                <RadioGroup
-                    android:id="@+id/genderRadioGroup"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/genderSelectorLayout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="end"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="9dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/genderMale"
+                    <TextView
+                        android:id="@+id/textGenderSelector"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_gender_selector_radio_male" />
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@string/label_gender_selector" />
 
-                    <RadioButton
-                        android:id="@+id/genderFemale"
+                    <RadioGroup
+                        android:id="@+id/genderRadioGroup"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_gender_selector_radio_female" />
-                </RadioGroup>
+                        android:gravity="end"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/genderMale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_gender_selector_radio_male" />
+
+                        <RadioButton
+                            android:id="@+id/genderFemale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_gender_selector_radio_female" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/textInputMemo"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="9dp"
+                    android:layout_weight="1"
+                    android:gravity="top"
+                    android:hint="@string/label_text_input_memo"
+                    android:inputType="textMultiLine" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/textInputMemo"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="9dp"
-                android:layout_weight="1"
-                android:gravity="top"
-                android:hint="@string/label_text_input_memo"
-                android:inputType="textMultiLine"
-                android:visibility="gone" />
-
         </LinearLayout>
+
     </ScrollView>
 
     <LinearLayout

@@ -9,50 +9,67 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import devcon.learn.contacts.R
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity(), View.OnClickListener {
+    private lateinit var buttonMore: Button
+    private lateinit var buttonCancel: Button
+    private lateinit var buttonSave: Button
+
+    private lateinit var textInputName: EditText
+    private lateinit var textInputPhone: EditText
+    private lateinit var additionalDataLayout: LinearLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_resgister)
+        initializeView()
+    }
 
-        val buttonMore = findViewById<Button>(R.id.buttonMore)
-        val buttonCancel = findViewById<Button>(R.id.buttonCancel)
-        val buttonSave = findViewById<Button>(R.id.buttonSave)
+    private fun initializeView() {
+        buttonMore = findViewById(R.id.buttonMore)
+        buttonCancel = findViewById(R.id.buttonCancel)
+        buttonSave = findViewById(R.id.buttonSave)
 
-        // 추후 2단계 과제를 위해 사용 예정
-        val textInputName = findViewById<EditText>(R.id.textInputName)
-        val textInputPhone = findViewById<EditText>(R.id.textInputPhone)
-        val textInputMail = findViewById<EditText>(R.id.textInputMail)
-        val textInputBirthday = findViewById<EditText>(R.id.textInputBirthday)
-        val genderSelectorLayout = findViewById<LinearLayout>(R.id.genderSelectorLayout)
-        val textInputMemo = findViewById<EditText>(R.id.textInputMemo)
+        textInputName = findViewById(R.id.textInputName)
+        textInputPhone = findViewById(R.id.textInputPhone)
+        additionalDataLayout = findViewById(R.id.additionalDataLayout)
 
-        buttonMore.setOnClickListener {
-            textInputBirthday.visibility = View.VISIBLE
-            genderSelectorLayout.visibility = View.VISIBLE
-            textInputMemo.visibility = View.VISIBLE
-            buttonMore.visibility = View.GONE
-        }
+        listOf(buttonMore, buttonCancel, buttonSave).forEach { it.setOnClickListener(this) }
+    }
 
-        buttonCancel.setOnClickListener {
-            val cancelToast = Toast.makeText(this.applicationContext, "취소 되었습니다.", Toast.LENGTH_SHORT)
-            cancelToast.show()
-            finish()
-        }
-
-        buttonSave.setOnClickListener {
-            val name = textInputName.text
-            val phoneNumber = textInputPhone.text
-
-            if (name.isEmpty() || phoneNumber.isEmpty()) {
-                val missingFieldToast = Toast.makeText(this.applicationContext, "이름과 전화번호는 필수입니다.", Toast.LENGTH_SHORT)
-                missingFieldToast.show()
-                return@setOnClickListener
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.buttonMore -> {
+                additionalDataLayout.visibility = View.VISIBLE
+                buttonMore.visibility = View.GONE
             }
 
-            val successSaveToast = Toast.makeText(this.applicationContext, "저장이 완료 되었습니다.", Toast.LENGTH_SHORT)
-            successSaveToast.show()
-            finish()
+            R.id.buttonCancel -> {
+                val cancelToast =
+                    Toast.makeText(this.applicationContext, "취소 되었습니다.", Toast.LENGTH_SHORT)
+                cancelToast.show()
+                finish()
+            }
+
+            R.id.buttonSave -> {
+                val name = textInputName.text
+                val phoneNumber = textInputPhone.text
+
+                if (name.isEmpty() || phoneNumber.isEmpty()) {
+                    val missingFieldToast = Toast.makeText(
+                        this.applicationContext, "이름과 전화번호는 필수입니다.", Toast.LENGTH_SHORT
+                    )
+                    missingFieldToast.show()
+                    return
+                }
+
+                val successSaveToast =
+                    Toast.makeText(this.applicationContext, "저장이 완료 되었습니다.", Toast.LENGTH_SHORT)
+                successSaveToast.show()
+                finish()
+            }
+
+            else -> {}
         }
     }
 }
