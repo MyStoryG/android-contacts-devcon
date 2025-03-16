@@ -2,12 +2,15 @@ package devcon.contacts
 
 import android.app.DatePickerDialog
 import android.content.Context
+import android.content.SyncInfo
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.Group
@@ -24,6 +27,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var groupMoreView: Group
     private lateinit var viewMore: View
     private lateinit var etBirthday: EditText
+    private lateinit var radioGroupGender: RadioGroup
+    private lateinit var etNote: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,8 +47,31 @@ class MainActivity : AppCompatActivity() {
         groupMoreView = findViewById(R.id.group_more_view)
         viewMore = findViewById(R.id.view_more)
         etBirthday = findViewById(R.id.et_birthday)
+        radioGroupGender = findViewById(R.id.radio_group_gender)
+        etNote = findViewById(R.id.et_note)
 
         initOnClickListener()
+    }
+
+    private fun saveProfile() {
+        val profile = Profile(
+            name = etName.text.toString(),
+            phone = etPhone.text.toString(),
+            mail = etMail.text.toString(),
+            birthday = etBirthday.text.toString(),
+            gender = getGenderTest(),
+            note = etNote.text.toString()
+        )
+        ProfileSharedPreferences.saveProfile(profile)
+    }
+
+    private fun getGenderTest(): String {
+        val selectedBtnId = radioGroupGender.checkedRadioButtonId
+        if (selectedBtnId != -1) {
+            val selectedBtn = findViewById<RadioButton>(selectedBtnId)
+            return selectedBtn.text.toString()
+        }
+        return "" // 선택된 버튼이 없음
     }
 
     private fun initOnClickListener() {
@@ -57,11 +85,14 @@ class MainActivity : AppCompatActivity() {
                 showKeyboard(etPhone)
             } else {
                 showToast(resources.getString(R.string.toast_save))
+                saveProfile()
+                Utils.navigateToActivity(this, ListActivity::class.java)
             }
         }
 
         btnCancel.setOnClickListener {
             showToast(resources.getString(R.string.toast_cancel))
+            Utils.navigateToActivity(this, ListActivity::class.java)
         }
 
         viewMore.setOnClickListener {

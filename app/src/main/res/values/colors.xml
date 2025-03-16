@@ -6,4 +6,5 @@
     <color name="transparent">#00000000</color>
 
     <color name="et_background">#CFEDF2</color>
+    <color name="btn_add_background">#FFC107</color>
 </resources>
