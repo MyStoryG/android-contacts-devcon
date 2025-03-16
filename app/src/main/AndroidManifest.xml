@@ -13,17 +13,8 @@
         android:theme="@style/Theme.Contacts"
         tools:targetApi="33">
         <activity
-            android:name="devcon.contacts.activity.ContactActivity"
-            android:exported="false"
-            android:launchMode="singleInstance" />
-        <activity
-            android:name="devcon.contacts.activity.RegisterActivity"
-            android:exported="false"
-            android:launchMode="singleInstance" />
-        <activity
-            android:name="devcon.contacts.activity.MainActivity"
-            android:exported="true"
-            android:launchMode="singleInstance">
+            android:name="devcon.contacts.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
