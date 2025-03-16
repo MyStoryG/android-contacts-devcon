@@ -4,16 +4,190 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/iv_title"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_android_black_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/et_height"
+        android:layout_marginHorizontal="@dimen/main_margin_horizontal"
+        android:layout_marginTop="@dimen/main_margin_top"
+        android:background="@drawable/bg_et_hint"
+        android:hint="@string/hint_name"
+        android:inputType="text"
+        android:paddingHorizontal="@dimen/et_padding_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_title" />
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/et_height"
+        android:layout_marginTop="@dimen/main_margin_top"
+        android:background="@drawable/bg_et_hint"
+        android:hint="@string/hint_phone"
+        android:inputType="phone"
+        android:paddingHorizontal="@dimen/et_padding_horizontal"
+        app:layout_constraintEnd_toEndOf="@id/et_name"
+        app:layout_constraintStart_toStartOf="@id/et_name"
+        app:layout_constraintTop_toBottomOf="@id/et_name" />
+
+    <EditText
+        android:id="@+id/et_mail"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/et_height"
+        android:layout_marginTop="@dimen/main_margin_top"
+        android:background="@drawable/bg_et_hint"
+        android:hint="@string/hint_mail"
+        android:inputType="textEmailAddress"
+        android:paddingHorizontal="@dimen/et_padding_horizontal"
+        app:layout_constraintEnd_toEndOf="@id/et_name"
+        app:layout_constraintStart_toStartOf="@id/et_name"
+        app:layout_constraintTop_toBottomOf="@id/et_phone" />
+
+    <EditText
+        android:id="@+id/et_birthday"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/et_height"
+        android:layout_marginHorizontal="@dimen/main_margin_horizontal"
+        android:layout_marginTop="@dimen/main_margin_top"
+        android:background="@drawable/bg_et_hint"
+        android:hint="@string/hint_birthday"
+        android:focusable="false"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:paddingHorizontal="@dimen/et_padding_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_mail" />
+
+    <EditText
+        android:id="@+id/et_gender"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/et_height"
+        android:layout_marginTop="@dimen/main_margin_top"
+        android:background="@drawable/bg_et_hint"
+        android:hint="@string/hint_gender"
+        android:focusable="false"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:paddingHorizontal="@dimen/et_padding_horizontal"
+        app:layout_constraintEnd_toEndOf="@id/et_name"
+        app:layout_constraintStart_toStartOf="@id/et_name"
+        app:layout_constraintTop_toBottomOf="@id/et_birthday" />
+
+    <EditText
+        android:id="@+id/et_note"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/et_height"
+        android:layout_marginTop="@dimen/main_margin_top"
+        android:background="@drawable/bg_et_hint"
+        android:hint="@string/hint_note"
+        android:inputType="textEmailAddress"
+        android:paddingHorizontal="@dimen/et_padding_horizontal"
+        app:layout_constraintEnd_toEndOf="@id/et_name"
+        app:layout_constraintStart_toStartOf="@id/et_name"
+        app:layout_constraintTop_toBottomOf="@id/et_gender" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/et_gender"
+        app:layout_constraintEnd_toEndOf="@id/et_gender"
+        app:layout_constraintTop_toTopOf="@id/et_gender">
+
+        <RadioButton
+            android:id="@+id/radio_gender_female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/radio_group_margin_end"
+            android:text="@string/female" />
+
+        <RadioButton
+            android:id="@+id/radio_gender_male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/radio_group_margin_end"
+            android:text="@string/male" />
+    </RadioGroup>
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_more_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="et_birthday, et_gender, et_note, radio_group_gender" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_more_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="tv_more,iv_more" />
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:text="@string/cancel"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_save"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:text="@string/save"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_cancel" />
+
+    <View
+        android:id="@+id/view_more"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_more"
+        app:layout_constraintEnd_toEndOf="@id/iv_more"
+        app:layout_constraintStart_toStartOf="@id/tv_more"
+        app:layout_constraintTop_toTopOf="@id/tv_more" />
+
+    <TextView
+        android:id="@+id/tv_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/main_margin_top"
+        android:text="@string/more"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@id/iv_more"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/et_name"
+        app:layout_constraintTop_toBottomOf="@id/et_mail" />
+
+    <ImageView
+        android:id="@+id/iv_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_keyboard_arrow_down_24"
+        app:layout_constraintBottom_toBottomOf="@id/tv_more"
+        app:layout_constraintEnd_toEndOf="@id/et_name"
+        app:layout_constraintStart_toEndOf="@id/tv_more"
+        app:layout_constraintTop_toTopOf="@id/tv_more" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
