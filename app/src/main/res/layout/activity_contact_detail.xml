@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_large"
+    tools:context="devcon.contacts.ContactDetailActivity">
+
+    <ImageView
+        android:id="@+id/imageview_contact_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/image_contact_picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_title_name"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/height_large"
+        android:layout_marginTop="@dimen/margin_extra_large"
+        android:gravity="center"
+        android:text="@string/hint_contact_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/text_primary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageview_contact_picture" />
+
+    <TextView
+        android:id="@+id/textview_contact_name"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/height_large"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/text_primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textview_title_name"
+        tools:text="제임스" />
+
+    <TextView
+        android:id="@+id/textview_title_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/height_large"
+        android:layout_marginTop="@dimen/margin_extra_large"
+        android:gravity="center"
+        android:text="@string/hint_contact_phone"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/text_primary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_title_name" />
+
+    <TextView
+        android:id="@+id/textview_contact_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/height_large"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/text_primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textview_title_phone"
+        tools:text="01012345678" />
+</androidx.constraintlayout.widget.ConstraintLayout>

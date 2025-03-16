@@ -16,7 +16,6 @@
         <activity
             android:name="devcon.contacts.ContactListActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,6 +25,10 @@
 
         <activity
             android:name="devcon.contacts.ContactAdditionActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="devcon.contacts.ContactDetailActivity"
             android:exported="true" />
     </application>
 </manifest>
