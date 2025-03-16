@@ -1,12 +1,13 @@
-package devcon.contacts
+package devcon.contacts.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import devcon.learn.contacts.R
 
-class MainActivity : AppCompatActivity() {
+class ContactActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_contact)
     }
 }
