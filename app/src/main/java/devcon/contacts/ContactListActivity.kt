@@ -3,7 +3,6 @@ package devcon.contacts
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ListView
 import android.widget.TextView
@@ -17,6 +16,7 @@ class ContactListActivity : AppCompatActivity() {
     private val listviewContacts by lazy { findViewById<ListView>(R.id.listview_contacts) }
 
     private val textviewEmptyContactList by lazy { findViewById<TextView>(R.id.textview_empty_contact_list) }
+    private val contactAdapter: ContactAdapter by lazy { ContactAdapter(this, mutableListOf()) }
 
     private val fabContactAddition by lazy { findViewById<FloatingActionButton>(R.id.fab_contact_addition) }
 
@@ -37,8 +37,6 @@ class ContactListActivity : AppCompatActivity() {
         }
     }
 
-    private val contactAdapter: ContactAdapter by lazy { ContactAdapter(this, mutableListOf()) }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contact_list)
@@ -46,19 +44,20 @@ class ContactListActivity : AppCompatActivity() {
         listviewContacts.apply {
             adapter = contactAdapter
             setOnItemClickListener { _, _, position, _ ->
-                val contact = contactAdapter.getItem(position)
-                Log.d(TAG, "$contact")
-                // TODO: ContactDetailActivity 로 이동
+                val intent = Intent(
+                    this@ContactListActivity,
+                    ContactDetailActivity::class.java
+                ).apply {
+                    val contact = contactAdapter.getItem(position)
+                    putExtra(Constants.EXTRA_CONTACT, contact)
+                }
+
+                activityResultLauncher.launch(intent)
             }
         }
         fabContactAddition.setOnClickListener {
             val intent = Intent(this, ContactAdditionActivity::class.java)
             activityResultLauncher.launch(intent)
         }
-    }
-
-    companion object {
-        private const val TAG = "ContactListActivity"
-
     }
 }
