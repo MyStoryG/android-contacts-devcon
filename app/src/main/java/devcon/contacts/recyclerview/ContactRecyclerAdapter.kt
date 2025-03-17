@@ -7,13 +7,14 @@ import devcon.contacts.Contact
 import devcon.learn.contacts.R
 
 class ContactRecyclerAdapter(
-    private val onClick:(contact:Contact)->Unit
-):RecyclerView.Adapter<ContactRecyclerViewHolder>() {
+    private val onClick: (contact: Contact) -> Unit
+) : RecyclerView.Adapter<ContactRecyclerViewHolder>() {
 
     var itemList = emptyList<Contact>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactRecyclerViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.contact_view_holder,parent,false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.contact_view_holder, parent, false)
         return ContactRecyclerViewHolder(view)
     }
 
@@ -23,9 +24,9 @@ class ContactRecyclerAdapter(
 
     override fun onBindViewHolder(holder: ContactRecyclerViewHolder, position: Int) {
         val item = itemList[position]
-        holder.run{
+        holder.run {
             setHolder(item.name)
-            itemView.setOnClickListener{
+            itemView.setOnClickListener {
                 onClick(item)
             }
         }

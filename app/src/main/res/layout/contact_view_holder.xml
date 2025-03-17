@@ -6,7 +6,7 @@
     android:layout_height="70dp">
 
     <TextView
-        android:id="@+id/contactName"
+        android:id="@+id/contactHolderName"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
