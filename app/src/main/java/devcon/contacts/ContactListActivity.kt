@@ -29,9 +29,10 @@ class ContactListActivity : AppCompatActivity() {
             } else {
                 result.data?.getParcelableExtra(Constants.EXTRA_CONTACT)
             }
-            contactAdapter.addItem(contact!!)
 
-            if (contactAdapter.count > 0) {
+            contact?.let { contactAdapter.addItem(it) }
+
+            if (!contactAdapter.isEmpty) {
                 textviewEmptyContactList.visibility = View.GONE
             }
         }
