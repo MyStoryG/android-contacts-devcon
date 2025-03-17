@@ -4,6 +4,8 @@
     <string name="cancel">취소</string>
     <string name="save">저장</string>
     <string name="more">더보기</string>
+    <string name="edit">작성하기</string>
+    <string name="exit">나가기</string>
 
     <string name="female">여성</string>
     <string name="male">남성</string>
@@ -19,4 +21,8 @@
     <string name="toast_required_phone">전화번호는 필수 값 입니다</string>
     <string name="toast_save_contact">저장이 완료 되었습니다</string>
     <string name="toast_cancel_contact">취소 되었습니다</string>
+
+    <string name="dialog_message_has_pending_edits">작성 중인 내용이 있습니다. 정말 나가시겠습니까?</string>
+
+    <string name="empty_contact_list">오른쪽 + 버튼을 클릭하여\n연락처를 등록해보세요.</string>
 </resources>

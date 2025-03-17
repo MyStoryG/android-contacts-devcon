@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/corner_radius_medium"
+    app:contentPadding="@dimen/padding_medium">
+
+    <TextView
+        android:id="@+id/textview_contact_thumbnail"
+        android:layout_width="@dimen/width_large"
+        android:layout_height="@dimen/height_large"
+        android:layout_gravity="start|center_vertical"
+        android:background="@drawable/background_contact_thumbnail"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/white"
+        tools:text="제" />
+
+    <TextView
+        android:id="@+id/textview_contact_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="68dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/text_primary"
+        tools:text="제임스" />
+</com.google.android.material.card.MaterialCardView>

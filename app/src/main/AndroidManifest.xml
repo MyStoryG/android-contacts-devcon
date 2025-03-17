@@ -12,8 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Contacts"
         tools:targetApi="33">
+
         <activity
-            android:name="devcon.contacts.MainActivity"
+            android:name="devcon.contacts.ContactListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +22,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <activity
+            android:name="devcon.contacts.ContactAdditionActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="devcon.contacts.ContactDetailActivity"
+            android:exported="true" />
+    </application>
 </manifest>
